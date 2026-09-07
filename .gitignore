@@ -1,0 +1,10 @@
+# Google Cloud service account keys / credentials — never commit these
+*service-account*.json
+*credentials*.json
+secrets/
+.env
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
