@@ -1,0 +1,18 @@
+@model Employee
+
+@{
+    ViewData["Title"] = "Submitted Employee Details";
+}
+
+<h2>Employee Submitted Successfully</h2>
+
+<table class="table">
+    <tr><th>Name</th><td>@Model.Name</td></tr>
+    <tr><th>Email</th><td>@Model.Email</td></tr>
+    <tr><th>Age</th><td>@Model.Age</td></tr>
+    <tr><th>Contact No</th><td>@Model.ContactNo</td></tr>
+    <tr><th>Salary</th><td>@Model.Salary.ToString("C")</td></tr>
+    <tr><th>Joined Date</th><td>@Model.JoinedDate.ToString("yyyy-MM-dd")</td></tr>
+</table>
+
+<a asp-action="Create">Add Another Employee</a>

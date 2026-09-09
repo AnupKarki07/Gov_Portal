@@ -1,0 +1,49 @@
+@model Employee
+
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+<h2>Add New Employee</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Age"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ContactNo"></label>
+        <input asp-for="ContactNo" class="form-control" />
+        <span asp-validation-for="ContactNo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Salary"></label>
+        <input asp-for="Salary" class="form-control" />
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="JoinedDate"></label>
+        <input asp-for="JoinedDate" class="form-control" />
+        <span asp-validation-for="JoinedDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn">Submit</button>
+</form>

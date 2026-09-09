@@ -1,0 +1,11 @@
+# .NET build artifacts
+bin/
+obj/
+*.user
+
+# EF Core / VS
+.vs/
+*.suo
+
+# OS
+.DS_Store

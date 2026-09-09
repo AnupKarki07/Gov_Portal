@@ -1,0 +1,19 @@
+@model Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h2>Student Details</h2>
+
+<table class="table">
+    <tr><th>Name</th><td>@Model.Name</td></tr>
+    <tr><th>Age</th><td>@Model.Age</td></tr>
+    <tr><th>Phone</th><td>@Model.Phone</td></tr>
+    <tr><th>Course</th><td>@Model.Course</td></tr>
+    <tr><th>Batch</th><td>@Model.Batch</td></tr>
+    <tr><th>Joined Year</th><td>@Model.JoinedYear</td></tr>
+</table>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn">Edit</a>
+<a asp-action="Index" class="btn">Back to List</a>

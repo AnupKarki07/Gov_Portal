@@ -1,0 +1,51 @@
+@model Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<h2>Edit Student</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Age"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone"></label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Course"></label>
+        <input asp-for="Course" class="form-control" />
+        <span asp-validation-for="Course" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Batch"></label>
+        <input asp-for="Batch" class="form-control" />
+        <span asp-validation-for="Batch" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="JoinedYear"></label>
+        <input asp-for="JoinedYear" class="form-control" />
+        <span asp-validation-for="JoinedYear" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn">Save</button>
+    <a asp-action="Index" class="btn">Back to List</a>
+</form>
