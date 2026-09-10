@@ -1,7 +1,7 @@
-using EmployeeMVC.Models;
+using ModelBindingDemo.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EmployeeMVC.Controllers;
+namespace ModelBindingDemo.Controllers;
 
 public class EmployeeController : Controller
 {

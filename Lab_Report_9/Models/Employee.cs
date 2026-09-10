@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace EmployeeMVC.Models;
+namespace ModelBindingDemo.Models;
 
 public class Employee
 {
@@ -14,7 +14,7 @@ public class Employee
     [EmailAddress(ErrorMessage = "Enter a valid email address")]
     public string Email { get; set; } = string.Empty;
 
-    [Range(18, 65, ErrorMessage = "Age must be between 18 and 65")]
+    [Range(18, 100, ErrorMessage = "Age must be between 18 and 100")]
     public int Age { get; set; }
 
     [Required(ErrorMessage = "Contact number is required")]
@@ -22,7 +22,7 @@ public class Employee
     [Display(Name = "Contact No")]
     public string ContactNo { get; set; } = string.Empty;
 
-    [Range(0, double.MaxValue, ErrorMessage = "Salary must be a positive number")]
+    [Range(0, 100000000, ErrorMessage = "Salary must be between 0 and 100000000")]
     [DataType(DataType.Currency)]
     public decimal Salary { get; set; }
 

@@ -8,7 +8,7 @@ database, and full CRUD via `StudentController`.
 
 ```
 Lab_Report_11/
-├── StudentEFCore.csproj
+├── StudentManagement.csproj
 ├── Program.cs
 ├── appsettings.json
 ├── Data/ApplicationDbContext.cs
@@ -37,7 +37,7 @@ validation (`[Required]`, `[Range]`, `[Phone]`).
 Edit `appsettings.json`:
 
 ```json
-"DefaultConnection": "Server=localhost;Database=StudentRecordDb;Trusted_Connection=True;TrustServerCertificate=True;"
+"DefaultConnection": "Server=localhost;Database=StudentManagementDB;Trusted_Connection=True;TrustServerCertificate=True;"
 ```
 
 Change `Server=` to your SQL Server instance, or switch to SQL auth if
@@ -59,7 +59,7 @@ dotnet ef database update
 ```
 
 This generates a `Migrations/` folder from the `Student` model and
-`ApplicationDbContext`, then creates the `StudentRecordDb` database and
+`ApplicationDbContext`, then creates the `StudentManagementDB` database and
 `Students` table in SQL Server.
 
 ## 4. Run the app

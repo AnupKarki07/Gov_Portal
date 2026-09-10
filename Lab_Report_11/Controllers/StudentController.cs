@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using StudentEFCore.Data;
-using StudentEFCore.Models;
+using StudentManagement.Data;
+using StudentManagement.Models;
 
-namespace StudentEFCore.Controllers;
+namespace StudentManagement.Controllers;
 
 public class StudentController : Controller
 {

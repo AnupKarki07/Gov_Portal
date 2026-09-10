@@ -53,6 +53,10 @@ dotnet run
 All queries use parameterized `SqlCommand` (`@Name`, `@Age`, ...) instead of
 string concatenation, so user input can never be interpreted as SQL.
 
+Age input is validated with a retry loop (`Please enter a valid age.` on
+non-numeric input), and after Add/Update/Delete the app automatically
+reprints the current `STUDENT LIST` so you can see the change take effect.
+
 ## Screenshots to capture for the report
 
 - The console menu

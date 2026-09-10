@@ -9,7 +9,7 @@ through a view.
 
 ```
 Lab_Report_9/
-├── EmployeeMVC.csproj
+├── ModelBindingDemo.csproj
 ├── Program.cs
 ├── appsettings.json
 ├── Models/Employee.cs
@@ -28,7 +28,8 @@ Lab_Report_9/
 
 `Id, Name, Email, Age, ContactNo, Salary, JoinedDate` — with `[Required]`,
 `[EmailAddress]`, `[Range]` and `[Phone]` data annotations so both
-client-side and server-side validation work.
+client-side and server-side validation work. `Age` must be 18–100, `Salary`
+must be 0–100000000, matching the validation messages shown in the report.
 
 ## How model binding flows
 
