@@ -14,10 +14,31 @@ Lab_Report_10/
 └── README.md
 ```
 
+## 0. Get SQL Server running (macOS / Apple Silicon)
+
+SQL Server itself doesn't run natively on macOS, and `Trusted_Connection`
+(Windows integrated auth) only works on Windows — so `Server=localhost;...
+Trusted_Connection=True` will always fail with *"A network-related or
+instance-specific error... error: 40"* on a Mac. Run SQL Server in Docker
+instead, and connect with a SQL login:
+
+```bash
+# Requires Docker Desktop. azure-sql-edge is Microsoft's arm64-native image
+# (works on M1/M2/M3); it's SQL-Server-wire-compatible.
+docker run -e "ACCEPT_EULA=1" -e "MSSQL_SA_PASSWORD=YourStrong!Passw0rd" \
+  -p 1433:1433 --name sql1 --hostname sql1 \
+  -d mcr.microsoft.com/azure-sql-edge:latest
+```
+
+Pick your own password and use it consistently below. To run the SQL below
+against the container, use **Azure Data Studio** (free, cross-platform GUI,
+closest thing to SSMS on a Mac) or `sqlcmd` — connect to `localhost,1433`
+with the `sa` login.
+
 ## 1. Create the database
 
-Open `Database/schema.sql` in SQL Server Management Studio (or run it with
-`sqlcmd`) to create `StudentDB` and the `Students` table.
+Open `Database/schema.sql` in Azure Data Studio (or run it with `sqlcmd`) to
+create `StudentDB` and the `Students` table.
 
 ## 2. Configure the connection
 
@@ -25,12 +46,12 @@ Open `Database/schema.sql` in SQL Server Management Studio (or run it with
 
 ```csharp
 private const string ConnectionString =
-    "Server=localhost;Database=StudentDB;Trusted_Connection=True;TrustServerCertificate=True;";
+    "Server=localhost,1433;Database=StudentDB;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;";
 ```
 
-Update `Server=` to your SQL Server instance name (e.g. `.\SQLEXPRESS`), or
-swap to SQL authentication (`User Id=...;Password=...;`) if you're not using
-Windows auth.
+Replace the password with whatever you passed to `docker run` above. If
+you're on Windows with a real SQL Server / LocalDB instance instead, you can
+swap back to `Server=.\SQLEXPRESS;Trusted_Connection=True;...`.
 
 ## 3. Run it
 

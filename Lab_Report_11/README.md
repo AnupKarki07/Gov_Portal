@@ -32,16 +32,34 @@ Lab_Report_11/
 `Id, Name, Age, Phone, Course, Batch, JoinedYear` with data annotations for
 validation (`[Required]`, `[Range]`, `[Phone]`).
 
+## 0. Get SQL Server running (macOS / Apple Silicon)
+
+SQL Server doesn't run natively on macOS, and `Trusted_Connection` (Windows
+integrated auth) only works on Windows — so the default connection string
+will fail with *"A network-related or instance-specific error... error: 40"*
+on a Mac. Run SQL Server in Docker instead, and connect with a SQL login:
+
+```bash
+# Requires Docker Desktop. azure-sql-edge is Microsoft's arm64-native image
+# (works on M1/M2/M3); it's SQL-Server-wire-compatible.
+docker run -e "ACCEPT_EULA=1" -e "MSSQL_SA_PASSWORD=YourStrong!Passw0rd" \
+  -p 1433:1433 --name sql1 --hostname sql1 \
+  -d mcr.microsoft.com/azure-sql-edge:latest
+```
+
+Pick your own password and use it consistently below.
+
 ## 1. Configure the connection string
 
 Edit `appsettings.json`:
 
 ```json
-"DefaultConnection": "Server=localhost;Database=StudentManagementDB;Trusted_Connection=True;TrustServerCertificate=True;"
+"DefaultConnection": "Server=localhost,1433;Database=StudentManagementDB;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;"
 ```
 
-Change `Server=` to your SQL Server instance, or switch to SQL auth if
-needed.
+Replace the password with whatever you passed to `docker run` above. If
+you're on Windows with a real SQL Server / LocalDB instance instead, you can
+swap back to `Server=.\SQLEXPRESS;Trusted_Connection=True;...`.
 
 ## 2. Install the EF Core CLI tool (once, machine-wide)
 

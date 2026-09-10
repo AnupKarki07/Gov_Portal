@@ -5,8 +5,11 @@ namespace StudentCRUD;
 internal static class Program
 {
     // Update this to match your SQL Server instance before running.
+    // macOS has no native SQL Server / Trusted_Connection (Windows integrated
+    // auth) — run SQL Server via Docker and use SQL login auth instead. See
+    // README.md for the Docker setup; replace the password below with yours.
     private const string ConnectionString =
-        "Server=localhost;Database=StudentDB;Trusted_Connection=True;TrustServerCertificate=True;";
+        "Server=localhost,1433;Database=StudentDB;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;";
 
     private static void Main()
     {
